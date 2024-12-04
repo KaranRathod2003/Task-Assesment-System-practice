@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <div class="px-4 py-2 bg-zinc-900 w-full min-h-screen text-white">
+        <h1>Create Task</h1>
+        <form action="/tasks" method="POST">
+            <input type="text" name="title" placeholder="Task Title" required>
+            <textarea name="description" placeholder="Task Description" required></textarea>
+            <select name="assignedTo">
+                <% users.forEach(user=> { %>
+                    <option value="<%= user._id %>">
+                        <%= user.username %>
+                    </option>
+                    <% }); %>
+            </select>
+            <button type="submit">Create Task</button>
+        </form>
+
+    </div>
+</body>
+
+</html>
